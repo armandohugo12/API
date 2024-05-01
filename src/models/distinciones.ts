@@ -26,7 +26,7 @@ export class Distincion extends Model {
         type: DataType.DATE,
         allowNull: false,
     })
-    fechaObtencion!: Date;
+    fechaObtencion!:Date;
 /*
     @Column({
         type: DataType.INTEGER,
@@ -45,4 +45,4 @@ export class Distincion extends Model {
 
     @BelongsTo(()=>Institucion,'Institucioes_idInstituciones')
     institucion!:Institucion;*/
-} 
+}  
