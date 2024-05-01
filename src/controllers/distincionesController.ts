@@ -51,7 +51,22 @@ export const buscarDistincion:RequestHandler = async (req,res)=>{
         message:`Se encontraron ${distincion.length} coincidencias para \'${term}\'`,
         data:distincion
     });
- 
 }
+    export const eliminarDistinciones:RequestHandler = async (req,res)=>{
+        const id = req.params.id;
+        
+        const distincion = await Distincion.findByPk(id);
+        if(!Distincion){
+            return res.status(404).json({message:"No existe"});
+        }
+    
+    
+        await Distincion.destroy({where:{idDistinciones:id}}).then(()=>{
+            return res.status(200).json({message:"eliminado Exitosamente "});
+        }).catch((error)=>{
+            return res.status(500).json({message:"Error al eliminarlo",error:error.message});
+        });
+    }
+
 
          
